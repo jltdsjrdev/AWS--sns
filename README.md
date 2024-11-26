@@ -37,3 +37,56 @@ pip install -r requirements.txt
 
 ## Configure suas credenciais AWS:
 aws configure
+
+
+## Estrutura do Projeto:
+
+
+
+AWS--sns/
+├── create-topic.py          # Script principal para criar tópicos SNS
+├── requirements.txt         # Dependências do projeto
+├── README.md                # Documentação do projeto
+└── .gitignore               # Arquivos ignorados no Git
+Como Usar
+Execute o script principal para criar um tópico:
+
+
+python create-topic.py
+Siga as instruções exibidas no terminal para criar e gerenciar seus tópicos SNS.
+
+Exemplo de Uso
+Abaixo está um trecho de código básico usado no script:
+
+
+import boto3
+
+sns_client = boto3.client('sns')
+
+# Criação de um tópico SNS
+response = sns_client.create_topic(Name='MeuTopico')
+print(f"Tópico criado com sucesso: {response['TopicArn']}")
+
+# Envio de uma mensagem para o tópico
+sns_client.publish(
+    TopicArn=response['TopicArn'],
+    Message='Mensagem de teste',
+    Subject='Assunto do teste'
+)
+
+
+Licença
+Este projeto está licenciado sob a MIT License.
+
+Contribuindo
+Contribuições são bem-vindas! Para contribuir:
+
+Faça um fork do repositório.
+Crie uma branch para sua feature:
+
+git checkout -b minha-feature
+Commit suas alterações.
+Faça um push para sua branch:
+
+git push origin minha-feature
+Abra um Pull Request.
